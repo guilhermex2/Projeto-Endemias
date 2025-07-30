@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro do Turno Diário</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastro do Turno Diário</h1>
+
+    <form id="form-turno">
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" required>
+
+      <label>Município</label>
+      <select name="municipio" required>
+        <option value="ipiau">Ipiaú</option>
+      </select>
+
+      <label>Ciclo/Ano:</label>
+      <select name="ciclo" required>
+        <option value="">Selecione</option>
+        <option value="1">1° Ciclo</option>
+        <option value="2">2° Ciclo</option>
+        <option value="3">3° Ciclo</option>
+        <option value="4">4° Ciclo</option>
+        <option value="5">5° Ciclo</option>
+        <option value="6">6° Ciclo</option>
+      </select>
+
+      <label>Localidade:</label>
+      <select name="localidade" required>
+        <option value="">Selecione</option>
+        <option value="aloiso-corrado">ALOISO CORRADO</option>
+        <option value="bela-vista">BELA VISTA</option>
+        <option value="centro">CENTRO</option>
+        <option value="conceicao">CONCEIÇÃO</option>
+        <option value="constanca">CONSTANÇA</option>
+        <option value="corrego-de-pedras">CORREGO DE PEDRAS</option>
+        <option value="emburrado">EMBURRADO</option>
+        <option value="euclides-neto">EUCLIDES NETO</option>
+        <option value="fazenda-do-povo">FAZENDA DO POVO</option>
+        <option value="nossa-senhora-aparecida">NOSSA SENHORA APARECIDA</option>
+        <option value="salvador-da-mata">SALVADOR DA MATA</option>
+        <option value="urbis">URBIS</option>
+      </select>
+
+      <label>Categoria da Localidade:</label>
+      <select name="categoria_localidade" required>
+        <option value="bairro">BAIRRO</option>
+        <option value="povoado">POVOADO</option>
+      </select>
+
+      <label>Zona:</label>
+      <select name="zona" required>
+        <option value="urbana">URBANA</option>
+        <option value="rural">RURAL</option>
+      </select>
+
+      <label>Atividade:</label>
+      <select name="atividade" required>
+        <option value="1-RA">1-RA - Revisão de área</option>
+        <option value="2-LI+T">2-LI+T - Levantamento de índice + Tratamento</option>
+        <option value="3-PE">3-PE - Ponto Estratégico</option>
+        <option value="4-T">4-T - Tratamento</option>
+      </select>
+
+      <label>Concluída:</label>
+      <select name="concluida" required>
+        <option value="sim">SIM</option>
+        <option value="nao">NÃO</option>
+      </select>
+
+      <label>Nome do Agente:</label>
+      <input type="text" name="agente" id="agente" placeholder="Seu nome" required>
+
+      <button type="submit">Salvar Turno</button>
+    </form>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-turno');
+
+    const turnoSalvo = JSON.parse(localStorage.getItem('turnoDiario'));
+    const hoje = new Date().toISOString().split('T')[0];
+
+    if (turnoSalvo && turnoSalvo.data === hoje) {
+      window.location.href = 'index.html';
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const dados = Object.fromEntries(formData.entries());
+
+      // Armazena os dados do turno
+      localStorage.setItem('turnoDiario', JSON.stringify(dados));
+
+      window.location.href = 'index.html';
+    });
+  });
+  </script>
+</body>
+</html>

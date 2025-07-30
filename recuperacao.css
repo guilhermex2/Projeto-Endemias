@@ -1,0 +1,39 @@
+body {
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 98%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+th, td {
+    vertical-align: middle;
+    text-align: center;
+}
+.form-control, .form-select {
+    font-size: 0.85rem;
+    padding: 5px 8px;
+}
+nav{
+  display: flex;
+  flex-direction: column;
+}
+a{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgb(18, 61, 255);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+}
+a:hover{
+  background-color: rgb(51, 88, 255);
+}
+.table-container{
+  margin-top: 100px;
+}

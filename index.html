@@ -5,81 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro Diário - Serviço Antivetorial</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f4f4;
-    }
-    .container {
-      max-width: 95%;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    th, td {
-      vertical-align: middle;
-      text-align: center;
-    }
-    .form-control, .form-select {
-      font-size: 0.85rem;
-      padding: 5px 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="css.css">
 </head>
 <body>
-
 <div class="container">
   <nav>
-    <a href="index.html">INDEX</a>
     <a href="recuperacao.html">RECUPERAÇÃO</a>
-    <a href="resumo.html">RESUMO</a>
   </nav>
   <h3 class="text-center mb-4">REGISTRO DIÁRIO DO SERVIÇO ANTIVETORIAL</h3>
   <form id="registroForm">
-    <div class="row g-2 mb-3">
-      <div class="col-md-3">
-        <label class="form-label">Data da Atividade</label>
-        <input type="date" class="form-control" name="data" required>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label">Código e nome da Localidade</label>
-        <select class="form-select" name="tipo_imovel">
-          <option value="aloiso-corrado">ALOISO CORRADO</option>
-          <option value="bela-vista">BELA VISTA</option>
-          <option value="centro">CENTRO</option>
-          <option value="conceicao">CONCEIÇÃO</option>
-          <option value="constanca">CONSTANÇA</option>
-          <option value="corrego-de-pedras">CÓRREGO DE PEDRAS</option>
-          <option value="emburrado">EMBURRADO</option>
-          <option value="euclides-neto">EUCLIDES NETO</option>
-          <option value="fazenda-do-povo">FAZENDA DO POVO</option>
-          <option value="nossa-senhora-aparecida">NOSSA SENHORA APARECIDA</option>
-          <option value="urbis">URBIS</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label">Catg. da Localidade</label>
-        <select class="form-select" name="tipo_imovel">
-          <option value="bairro">BAIRRO</option>
-          <option value="povoado">POVOADO</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label">Zona</label>
-        <select class="form-select" name="tipo_imovel">
-          <option value="urbana">URBANA</option>
-          <option value="rural">RURAL</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label">Concluída</label>
-        <select class="form-select" name="tipo_imovel">
-          <option value="sim">SIM</option>
-          <option value="nao">NÃO</option>
-        </select>
-      </div>
-      
+    <div class="row g-2 mb-3">      
       <div class="col-md-2">
         <label class="form-label">Setor</label>
         <input type="text" class="form-control" name="setor">
@@ -112,13 +47,8 @@
         </select>
       </div>
       <div class="col-md-4">
-        <label class="form-label">Atividade</label>
-        <select class="form-select" name="atividade">
-          <option value="1-RA">1-RA - Revisão de área</option>
-          <option value="2-LI+T">2-LI+T - Levantamento de índice + Tratamento</option>
-          <option value="3-PE">3-PE - Ponto Estratégico</option>
-          <option value="4-T">4-T - Tratamento</option>
-        </select>
+        <label class="form-label">Horário de entrada</label>
+        <input type="time" class="form-control" name="horario_entrada">
       </div>
     </div>
 
@@ -203,54 +133,124 @@
     </thead>
     <tbody></tbody>
   </table>
+  <div class="table-container"> 
+  <h3 class="text-center mb-4">RESUMO DOS TRABALHOS DE CAMPO</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th rowspan="3">IMÓVEIS FECH.</th>
+                    <th colspan="5">TIPO DE IMÓVEIS</th>
+                    <th colspan="7">DEPÓSITOS INSPECIONADOS</th>
+                    <th rowspan="3">DEP. ELIM.</th>
+                    <th rowspan="3">IM. INSP.</th>
+                    <th rowspan="3">QUANT. AMOSTRAS</th>
+                    <th rowspan="3">IM. TRAT.</th>
+                    <th rowspan="3">LARV. TRAT.</th>
+                    <th rowspan="3">DEP. TRAT.</th>
+                </tr>
+                <tr>
+                    <th colspan="5"></th>
+                    <th colspan="7"></th>
+                </tr>
+                <tr>
+                    <th>R</th>
+                    <th>C</th>
+                    <th>TB</th>
+                    <th>O</th>
+                    <th>TOTAL</th>
+                    <th>A1</th>
+                    <th>A2</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D1</th>
+                    <th>D2</th>
+                    <th>E</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0,0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
-  const form = document.getElementById("registroForm");
-  const tabela = document.querySelector("#tabela-registros tbody");
+  document.addEventListener('DOMContentLoaded', () => {
+    const turno = JSON.parse(localStorage.getItem('turnoDiario'));
+    if (!turno) {
+      alert('Cadastre o turno diário antes de registrar imóveis.');
+      window.location.href = 'turno.html';
+    }
 
-  function salvarNoLocalStorage(dado) {
-    const dados = JSON.parse(localStorage.getItem("registros") || "[]");
-    dados.push(dado);
-    localStorage.setItem("registros", JSON.stringify(dados));
-  }
+    const form = document.getElementById('registroForm');
+    const tabela = document.querySelector('#tabela-registros tbody');
 
-  function carregarRegistros() {
-    const dados = JSON.parse(localStorage.getItem("registros") || "[]");
-    tabela.innerHTML = "";
-    dados.forEach(d => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${d.data}</td>
-        <td>${d.setor}</td>
-        <td>${d.lado}</td>
-        <td>${d.logradouro}</td>
-        <td>${d.tipo_imovel}</td>
-        <td>${d.atividade}</td>
-        <td>${d.a1}</td>
-        <td>${d.a2}</td>
-        <td>${d.b}</td>
-        <td>${d.c}</td>
-        <td>${d.d1}</td>
-        <td>${d.d2}</td>
-        <td>${d.e}</td>
-        <td>${d.depositos_eliminados}</td>
-        <td>${d.larvicida}</td>
-        <td>${d.qtde_im_trat}</td>
-      `;
-      tabela.appendChild(tr);
+    function salvarNoLocalStorage(dado) {
+      const lista = JSON.parse(localStorage.getItem('registros') || '[]');
+      dado.data = turno.data;
+      dado.tipo_imovel = dado.tipo_imovel || '-';
+      dado.atividade = turno.atividade || '-';
+      lista.push(dado);
+      localStorage.setItem('registros', JSON.stringify(lista));
+    }
+
+    function carregarRegistros() {
+      const lista = JSON.parse(localStorage.getItem('registros') || '[]');
+      tabela.innerHTML = '';
+      lista.filter(r => r.data === turno.data).forEach(d => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${d.data}</td>
+          <td>${d.setor}</td>
+          <td>${d.lado}</td>
+          <td>${d.logradouro}</td>
+          <td>${d.tipo_imovel}</td>
+          <td>${d.atividade}</td>
+          <td>${d.a1}</td>
+          <td>${d.a2}</td>
+          <td>${d.b}</td>
+          <td>${d.c}</td>
+          <td>${d.d1}</td>
+          <td>${d.d2}</td>
+          <td>${d.e}</td>
+          <td>${d.depositos_eliminados}</td>
+          <td>${d.larvicida}</td>
+          <td>${d.qtde_im_trat}</td>
+        `;
+        tabela.appendChild(tr);
+      });
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const dados = Object.fromEntries(new FormData(form).entries());
+      salvarNoLocalStorage(dados);
+      carregarRegistros();
+      form.reset();
     });
-  }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const dados = Object.fromEntries(new FormData(form).entries());
-    salvarNoLocalStorage(dados);
     carregarRegistros();
-    form.reset();
   });
-
-  window.addEventListener("DOMContentLoaded", carregarRegistros);
+</script>
 </script>
 </body>
 </html>
