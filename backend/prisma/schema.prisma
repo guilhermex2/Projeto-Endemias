@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Turno {
+  id                    String     @id @default(uuid())
+  data                 DateTime
+  municipio            String
+  ciclo                Int
+  localidade           String
+  categoria_localidade String
+  zona                 String
+  atividade            String
+  concluida            Boolean
+  agente               String
+  registros            Registro[] // Registros dos imóveis
+  criadoEm             DateTime   @default(now())
+}
+
+model Registro {
+  id                   String   @id @default(uuid())
+  turnoId              String
+  turno                Turno    @relation(fields: [turnoId], references: [id], onDelete: Cascade)
+  setor                String?
+  lado                 String?
+  logradouro           String?
+  numero               String?
+  sequencia            String?
+  complemento          String?
+  tipo_imovel          String?
+  horario_entrada      String?
+  a1                   Int      @default(0)
+  a2                   Int      @default(0)
+  b                    Int      @default(0)
+  c                    Int      @default(0)
+  d1                   Int      @default(0)
+  d2                   Int      @default(0)
+  e                    Int      @default(0)
+  depositos_eliminados Int      @default(0)
+  insp_l1              Int      @default(0)
+  larvicida            String?
+  qtde_im_trat         Int      @default(0)
+  criadoEm             DateTime @default(now())
+}
