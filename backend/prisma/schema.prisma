@@ -14,43 +14,57 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Usuario {
+  id      String   @id @default(uuid())
+  nome    String @unique
+  turnos  Turno[]
+}
+
 model Turno {
   id                    String     @id @default(uuid())
-  data                 DateTime
-  municipio            String
-  ciclo                Int
-  localidade           String
-  categoria_localidade String
-  zona                 String
-  atividade            String
-  concluida            Boolean
-  agente               String
-  registros            Registro[] // Registros dos imóveis
-  criadoEm             DateTime   @default(now())
+  data                  DateTime
+  municipio             String
+  ciclo                 Int
+  localidade            String
+  categoria_localidade  String
+  zona                  String
+  atividade             String
+  concluida             Boolean
+  usuarioId             String
+  usuario               Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  registros             Registro[]
+  criadoEm              DateTime   @default(now())
 }
 
 model Registro {
   id                   String   @id @default(uuid())
   turnoId              String
   turno                Turno    @relation(fields: [turnoId], references: [id], onDelete: Cascade)
-  setor                String?
-  lado                 String?
-  logradouro           String?
-  numero               String?
-  sequencia            String?
-  complemento          String?
-  tipo_imovel          String?
-  horario_entrada      String?
-  a1                   Int      @default(0)
-  a2                   Int      @default(0)
-  b                    Int      @default(0)
-  c                    Int      @default(0)
-  d1                   Int      @default(0)
-  d2                   Int      @default(0)
-  e                    Int      @default(0)
-  depositos_eliminados Int      @default(0)
-  insp_l1              Int      @default(0)
-  larvicida            String?
-  qtde_im_trat         Int      @default(0)
-  criadoEm             DateTime @default(now())
+  quarteirao           String   
+  sequencia            String   
+  lado                 String   
+  logradouro           String   
+  numero               String   
+  sequencia2           String   
+  complemento          String   
+  tipo_imovel          String   
+  horario_entrada      String   
+  a1                   Int      
+  a2                   Int      
+  b                    Int      
+  c                    Int      
+  d1                   Int      
+  d2                   Int      
+  e                    Int      
+  depositos_eliminados Int      
+  insp_l1              Int      
+  amostra_inicial      Int      
+  amostra_final        Int      
+  qtd_tubitos          Int      
+  im_trat              Int      
+  queda_gramas         Int      
+  qtd_dep_trat         Int      
+  informacao           String   
+  data                 DateTime 
+  atividade            String   
 }

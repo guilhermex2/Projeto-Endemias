@@ -9,15 +9,16 @@
 </head>
 <body>
 <div class="container">
-  <nav>
-    <a href="recuperacao.html">RECUPERAÇÃO</a>
-  </nav>
   <h3 class="text-center mb-4">REGISTRO DIÁRIO DO SERVIÇO ANTIVETORIAL</h3>
   <form id="registroForm">
-    <div class="row g-2 mb-3">      
+    <div class="row g-2 mb-3">
       <div class="col-md-2">
-        <label class="form-label">Setor</label>
-        <input type="text" class="form-control" name="setor">
+        <label class="form-label">Nº do Quarteirão</label>
+        <input type="text" class="form-control" name="quarteirao">      
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Seq.</label>
+        <input type="text" class="form-control" name="sequencia">
       </div>
       <div class="col-md-2">
         <label class="form-label">Lado</label>
@@ -33,7 +34,7 @@
       </div>
       <div class="col-md-2">
         <label class="form-label">Sequência</label>
-        <input type="text" class="form-control" name="sequencia">
+        <input type="text" class="form-control" name="sequencia2">
       </div>
       <div class="col-md-3">
         <label class="form-label">Complemento</label>
@@ -44,6 +45,11 @@
         <select class="form-select" name="tipo_imovel">
           <option value="R">R</option>
           <option value="R-F">R-F</option>
+          <option value="C">C</option>
+          <option value="C-F">C-F</option>
+          <option value="TB">TB</option>
+          <option value="TB-F">TB-F</option>
+          <option value="O">O</option>
         </select>
       </div>
       <div class="col-md-4">
@@ -91,24 +97,49 @@
       </div>
       <div class="col-md-3">
         <label class="form-label">Imóveis Insp. L1</label>
-        <input type="number" class="form-control" name="insp_l1" min="0" value="0">
+        <select class="form-select" name="insp_l1">
+          <option value="X">X</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+
+      <h5 class="mt-4">Amostra / Tratamento (Larvicida)</h5>
+      <div class="col-md-3">
+        <label class="form-label">N. Amostra inicial</label>
+        <input type="number" class="form-control" name="amostra_inicial" min="0" value="0">
       </div>
       <div class="col-md-3">
-        <label class="form-label">Larvicida</label>
-        <input type="text" class="form-control" name="larvicida">
+        <label class="form-label">N. Amostra final</label>
+        <input type="number" class="form-control" name="amostra_final" min="0" value="0">
       </div>
       <div class="col-md-3">
-        <label class="form-label">Qtd. Im. Trat.</label>
-        <input type="number" class="form-control" name="qtde_im_trat" min="0" value="0">
+        <label class="form-label">Qtd. de Tubitos</label>
+        <input type="number" class="form-control" name="qtd_tubitos" min="0" value="0">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Im. Trat.</label>
+        <select class="form-select" name="im_trat">
+          <option value="X">X</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Qtde. (Gramas)</label>
+        <input type="number" class="form-control" name="queda_gramas" min="0" value="0">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Qtde. Dep. Trat.</label>
+        <input type="number" class="form-control" name="qtd_dep_trat" min="0" value="0">
       </div>
       <div class="col-md-3">
         <label class="form-label">Informação</label>
-        <textarea name="" id="" cols="60" rows="3"></textarea>
+        <textarea name="informacao" cols="60" rows="3"></textarea>
       </div>
     </div>
 
     <div class="row g-2 mt-4">
       <div class="col-12 text-end">
+        <a href="recuperacao.html">RECUPERAÇÃO</a>
         <button type="submit" class="btn btn-primary">Salvar Registro</button>
       </div>
     </div>
@@ -120,137 +151,88 @@
     <thead class="table-light">
       <tr>
         <th>Data</th>
-        <th>Setor</th>
+        <th>Quarteirão</th>
         <th>Lado</th>
         <th>Logradouro</th>
+        <th>Nº</th>
+        <th>Sequência</th>
+        <th>Complemento</th>
         <th>Tipo Imóvel</th>
-        <th>Atividade</th>
+        <th>Horário Entrada</th>
         <th>A1</th><th>A2</th><th>B</th><th>C</th><th>D1</th><th>D2</th><th>E</th>
-        <th>Eliminados</th>
-        <th>Larvicida</th>
-        <th>Trat.</th>
+        <th>Eliminado</th>
+        <th>Imóveis Insp. L1</th>
+        <th>N° Amost. Inicial</th>
+        <th>N° Amost. Final</th>
+        <th>Qtd. Tubitos</th>
+        <th>Im. Trat.</th>
+        <th>Queda (g)</th>
+        <th>Qtd. Dep. Trat.</th>
+        <th>Informação</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
   <div class="table-container"> 
-  <h3 class="text-center mb-4">RESUMO DOS TRABALHOS DE CAMPO</h3>
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th rowspan="3">IMÓVEIS FECH.</th>
-                    <th colspan="5">TIPO DE IMÓVEIS</th>
-                    <th colspan="7">DEPÓSITOS INSPECIONADOS</th>
-                    <th rowspan="3">DEP. ELIM.</th>
-                    <th rowspan="3">IM. INSP.</th>
-                    <th rowspan="3">QUANT. AMOSTRAS</th>
-                    <th rowspan="3">IM. TRAT.</th>
-                    <th rowspan="3">LARV. TRAT.</th>
-                    <th rowspan="3">DEP. TRAT.</th>
-                </tr>
-                <tr>
-                    <th colspan="5"></th>
-                    <th colspan="7"></th>
-                </tr>
-                <tr>
-                    <th>R</th>
-                    <th>C</th>
-                    <th>TB</th>
-                    <th>O</th>
-                    <th>TOTAL</th>
-                    <th>A1</th>
-                    <th>A2</th>
-                    <th>B</th>
-                    <th>C</th>
-                    <th>D1</th>
-                    <th>D2</th>
-                    <th>E</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0,0</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h3 class="text-center mb-4">RESUMO DOS TRABALHOS DE CAMPO</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th rowspan="3">IMÓVEIS FECH.</th>
+          <th colspan="5">TIPO DE IMÓVEIS</th>
+          <th colspan="7">DEPÓSITOS INSPECIONADOS</th>
+          <th rowspan="3">DEP. ELIM.</th>
+          <th rowspan="3">IM. INSP.</th>
+          <th rowspan="3">QUANT. AMOSTRAS</th>
+          <th rowspan="3">IM. TRAT.</th>
+          <th rowspan="3">LARV. TRAT.</th>
+          <th rowspan="3">DEP. TRAT.</th>
+        </tr>
+        <tr>
+          <th colspan="5"></th>
+          <th colspan="7"></th>
+        </tr>
+        <tr>
+          <th>R</th>
+          <th>C</th>
+          <th>TB</th>
+          <th>O</th>
+          <th>TOTAL</th>
+          <th>A1</th>
+          <th>A2</th>
+          <th>B</th>
+          <th>C</th>
+          <th>D1</th>
+          <th>D2</th>
+          <th>E</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0,0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const turno = JSON.parse(localStorage.getItem('turnoDiario'));
-    if (!turno) {
-      alert('Cadastre o turno diário antes de registrar imóveis.');
-      window.location.href = 'turno.html';
-    }
-
-    const form = document.getElementById('registroForm');
-    const tabela = document.querySelector('#tabela-registros tbody');
-
-    function salvarNoLocalStorage(dado) {
-      const lista = JSON.parse(localStorage.getItem('registros') || '[]');
-      dado.data = turno.data;
-      dado.tipo_imovel = dado.tipo_imovel || '-';
-      dado.atividade = turno.atividade || '-';
-      lista.push(dado);
-      localStorage.setItem('registros', JSON.stringify(lista));
-    }
-
-    function carregarRegistros() {
-      const lista = JSON.parse(localStorage.getItem('registros') || '[]');
-      tabela.innerHTML = '';
-      lista.filter(r => r.data === turno.data).forEach(d => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${d.data}</td>
-          <td>${d.setor}</td>
-          <td>${d.lado}</td>
-          <td>${d.logradouro}</td>
-          <td>${d.tipo_imovel}</td>
-          <td>${d.atividade}</td>
-          <td>${d.a1}</td>
-          <td>${d.a2}</td>
-          <td>${d.b}</td>
-          <td>${d.c}</td>
-          <td>${d.d1}</td>
-          <td>${d.d2}</td>
-          <td>${d.e}</td>
-          <td>${d.depositos_eliminados}</td>
-          <td>${d.larvicida}</td>
-          <td>${d.qtde_im_trat}</td>
-        `;
-        tabela.appendChild(tr);
-      });
-    }
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const dados = Object.fromEntries(new FormData(form).entries());
-      salvarNoLocalStorage(dados);
-      carregarRegistros();
-      form.reset();
-    });
-
-    carregarRegistros();
-  });
-</script>
-</script>
+<script src="js/registros.js"></script>
 </body>
 </html>
