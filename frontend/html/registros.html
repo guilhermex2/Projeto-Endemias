@@ -174,8 +174,8 @@
   <!-- MENU LATERAL -->
   <nav class="sidebar hidden" id="sidebar">
     <h4>Menu</h4>
-    <a href="index.html">🏠 Início</a>
     <a href="turno.html">🕒 Turno Diário</a>
+    <a href="index.html">🏠 Início</a>
     <a href="registros.html">📝 Registros</a>
     <a href="recuperacao.html">📂 Recuperação</a>
     <a href="reg-recuperacao.html">📂 Registros Recuperação</a>
@@ -183,21 +183,40 @@
     <a href="#" class="logout">🚪 Sair</a>
   </nav>
 
-  <h1>Tabela de Registros Recuperação</h1>
+  <h1>Tabela de Registros</h1>
 
   <div class="table-container">
     <table id="tabela-registros">
       <thead>
         <tr>
-          <th>Data</th><th>Setor</th><th>Lado</th><th>Logradouro</th><th>Tipo Imóvel</th>
-          <th>Trat.</th><th>Larvicida</th><th>Germinal</th><th>Dep. Trat.</th><th>Dep. Elim.</th><th>Obs.</th>
+          <th>Data</th>
+          <th>Quarteirão</th>
+          <th>Lado</th>
+          <th>Logradouro</th>
+          <th>Nº</th>
+          <th>Sequência</th>
+          <th>Complemento</th>
+          <th>Tipo Imóvel</th>
+          <th>Horário Entrada</th>
+          <th>A1</th><th>A2</th><th>B</th><th>C</th><th>D1</th><th>D2</th><th>E</th>
+          <th>Eliminado</th>
+          <th>Imóveis Insp. L1</th>
+          <th>N° Amost. Inicial</th>
+          <th>N° Amost. Final</th>
+          <th>Qtd. Tubitos</th>
+          <th>Im. Trat.</th>
+          <th>Queda (g)</th>
+          <th>Qtd. Dep. Trat.</th>
+          <th>Informação</th>
         </tr>
       </thead>
       <tbody>
+      <!---->
       </tbody>
     </table>
   </div>
 
+  <script type="module" src="../js/registros-new.js" defer></script>
   <script>
     const menuToggle = document.getElementById("menuToggle");
     const sidebar = document.getElementById("sidebar");

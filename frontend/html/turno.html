@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro do Turno Diário</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+
+        /* ===== MENU LATERAL ===== */
+    .sidebar {
+      width: 240px;
+      background-color: #0d6efd;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #0b5ed7;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      background: #dc3545;
+      text-align: center;
+    }
+
+    /* ===== BOTÃO DE MENU ===== */
+    .menu-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: background 0.3s;
+    }
+
+    .menu-toggle:hover {
+      background-color: #0b5ed7;
+    }
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BOTÃO PARA ABRIR MENU -->
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <!-- MENU LATERAL -->
+  <nav class="sidebar hidden" id="sidebar">
+    <h4>Menu</h4>
+    <a href="turno.html" style="color: white;">🕒 Turno Diário</a>
+    <a href="index.html">🏠 Início</a>
+    <a href="registros.html">📝 Registros</a>
+    <a href="recuperacao.html">📂 Recuperação</a>
+    <a href="reg-recuperacao.html">📂 Registros Recuperação</a>
+    <a href="final.html">📊 Resumo</a>
+    <a href="#" class="logout">🚪 Sair</a>
+  </nav>
+
+  <div class="container">
+    <h1>Cadastro do Turno Diário</h1>
+
+    <form id="form-turno">
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" required />
+
+      <label>Município</label>
+      <select name="municipio" required>
+        <option value="ipiau">Ipiaú</option>
+      </select>
+
+      <label>Ciclo/Ano:</label>
+      <select name="ciclo" required>
+        <option value="">Selecione</option>
+        <option value="1">1° Ciclo</option>
+        <option value="2">2° Ciclo</option>
+        <option value="3">3° Ciclo</option>
+        <option value="4">4° Ciclo</option>
+        <option value="5">5° Ciclo</option>
+        <option value="6">6° Ciclo</option>
+      </select>
+
+      <label>Localidade:</label>
+      <select name="localidade" required>
+        <option value="">Selecione</option>
+        <option value="aloiso-corrado">ALOISO CORRADO</option>
+        <option value="bela-vista">BELA VISTA</option>
+        <option value="centro">CENTRO</option>
+        <option value="conceicao">CONCEIÇÃO</option>
+        <option value="constanca">CONSTANÇA</option>
+        <option value="corrego-de-pedras">CORREGO DE PEDRAS</option>
+        <option value="emburrado">EMBURRADO</option>
+        <option value="euclides-neto">EUCLIDES NETO</option>
+        <option value="fazenda-do-povo">FAZENDA DO POVO</option>
+        <option value="nossa-senhora-aparecida">NOSSA SENHORA APARECIDA</option>
+        <option value="salvador-da-mata">SALVADOR DA MATA</option>
+        <option value="urbis">URBIS</option>
+      </select>
+
+      <label>Categoria da Localidade:</label>
+      <select name="categoria_localidade" required>
+        <option value="bairro">BAIRRO</option>
+        <option value="povoado">POVOADO</option>
+      </select>
+
+      <label>Zona:</label>
+      <select name="zona" required>
+        <option value="urbana">URBANA</option>
+        <option value="rural">RURAL</option>
+      </select>
+
+      <label>Atividade:</label>
+      <select name="atividade" required>
+        <option value="1-RA">1-RA - Revisão de área</option>
+        <option value="2-LI+T">2-LI+T - Levantamento de índice + Tratamento</option>
+        <option value="3-PE">3-PE - Ponto Estratégico</option>
+        <option value="4-T">4-T - Tratamento</option>
+      </select>
+
+
+      <label>Nome do Agente:</label>
+      <input type="text" name="agente" id="agente" placeholder="Seu nome" required>
+
+      <button type="submit" class="btnSalvarTurno">Salvar Turno</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/dexie@4.0.1/dist/dexie.min.js"></script>
+  <script type="module" src="../js/turno.js"></script>
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    const btnSair = document.querySelector(".logout")
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+      sidebar.classList.toggle("hidden");
+    });
+
+    btnSair.addEventListener('click', () => {
+      //Redirecionar ou usar para logout ( limpar o db local e voltar para turno)
+      console.log('clicou em sair!')
+    })
+    console.log("Turno Diário page loaded.");
+  </script>
+</body>
+</html>
