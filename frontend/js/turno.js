@@ -2,6 +2,13 @@
 import { db } from "./db.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const hoje = new Date().toISOString().split("T")[0];
+  const turnoHoje = await db.turnos.get(hoje);
+
+  if (turnoHoje && turnoHoje.status !== "finalizado") {
+    window.location.href = "registros.html";
+  }
+
   const form = document.getElementById("form-turno");
 
   form.addEventListener("submit", async (e) => {
@@ -32,6 +39,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("Turno salvo com sucesso!");
 
     // Redireciona para a página de registros
-    window.location.href = "index.html";
+    window.location.href = "ficha-registro.html";
   });
 });

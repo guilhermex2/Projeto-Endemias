@@ -122,11 +122,11 @@
   <!-- MENU LATERAL -->
   <nav class="sidebar hidden" id="sidebar">
     <h4>Menu</h4>
-    <a href="turno.html">🕒 Turno Diário</a>
-    <a href="index.html">🏠 Início</a>
-    <a href="registros.html">📝 Registros</a>
-    <a href="recuperacao.html">📂 Recuperação</a>
-    <a href="reg-recuperacao.html">📂 Registros Recuperação</a>
+    <a href="turno.html" style="color: white;">🕒 Turno Diário</a>
+    <a href="ficha-registro.html">🏠 Campo</a>
+    <a href="tabela-registros.html">📝 Tabela Registros</a>
+    <a href="ficha-recuperacao.html">📂 Recuperação</a>
+    <a href="tabela-recuperacao.html">📂 Tabela Registros Recuperação</a>
     <a href="resumo_campo.html">📊 Resumo</a>
     <a href="#" class="logout">🚪 Sair</a>
   </nav>
@@ -272,6 +272,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/dexie@4.0.1/dist/dexie.min.js"></script>
   <script type="module" src="../js/db.js"></script>
+  <script type="module" src="../js/turno-guard.js"></script>
   <script type="module" src="../js/registros.js"></script>
   <script>
     const menuToggle = document.getElementById("menuToggle");

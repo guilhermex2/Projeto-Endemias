@@ -93,9 +93,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!confirm("Deseja finalizar este turno?")) return;
 
       await db.turnos.update(turno.data, {
-        status: "finalizado",
-        resumo,
-        finalizadoEm: new Date().toISOString()
+        finalizadoEm: new Date().toISOString(),
+        resumo
       });
 
       badge.textContent = "FINALIZADO";
@@ -103,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       btnFinalizar.disabled = true;
 
       alert("Turno finalizado com sucesso!");
-      window.location.href = "index.html";
+      window.location.href = "ficha-registro.html";
     });
 
   } catch (err) {
